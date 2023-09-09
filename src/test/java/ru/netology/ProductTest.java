@@ -1,4 +1,5 @@
 package ru.netology;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.Product;
@@ -20,11 +21,11 @@ public class ProductTest {
         repo.add(product4);
         repo.add(product5);
 
-    Product[] expected = {product1, product2, product3, product4, product5};
-    Product[] actual = repo.findAll();
+        Product[] expected = {product1, product2, product3, product4, product5};
+        Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
-}
+    }
 
     @Test
     public void shouldRemoveProduct() {
@@ -32,9 +33,27 @@ public class ProductTest {
 
 
         Assertions.assertThrows(NotFoundException.class, () -> {
-            repo.removeByld(5);
+            repo.removeById(5);
         });
 
     }
+
+    @Test
+    public void shouldSaveProduct() {
+        ShopRepository repo = new ShopRepository();
+
+        repo.add(product1);
+        repo.add(product2);
+        repo.add(product3);
+        repo.add(product4);
+        repo.add(product5);
+
+        Product[] expected = {product1, product2, product3, product4, product5};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
 }
 

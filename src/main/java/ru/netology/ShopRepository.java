@@ -3,14 +3,7 @@ package ru.netology;
 public class ShopRepository {
     private Product[] products = new Product[0];
 
-    /**
-     * Вспомогательный метод для имитации добавления элемента в массив
-     *
-     * @param current — массив, в который мы хотим добавить элемент
-     * @param product — элемент, который мы хотим добавить
-     * @return — возвращает новый массив, который выглядит, как тот, что мы передали,
-     * но с добавлением нового элемента в конец
-     */
+
     private Product[] addToArray(Product[] current, Product product) {
         Product[] tmp = new Product[current.length + 1];
         for (int i = 0; i < current.length; i++) {
@@ -20,10 +13,7 @@ public class ShopRepository {
         return tmp;
     }
 
-    /**
-     * Метод добавления товара в репозиторий
-     * @param product — добавляемый товар
-     */
+
     public void add(Product product) {
         if (findById(product.getId()) != null) {
             throw new AlreadyExistsException("Element with id: " + product.getId() + " already exist");
@@ -41,8 +31,8 @@ public class ShopRepository {
         return products;
     }
 
-    // Этот способ мы рассматривали в теории в теме про композицию
-    public void removeByld(int id) {
+
+    public void removeById(int id) {
         if (findById(id) == null) {
             throw new NotFoundException("Element with id: " + id + " not found");
         }
@@ -51,7 +41,7 @@ public class ShopRepository {
         for (Product product : products) {
             if (product.getId() != id) {
                 tmp[index] = product;
-               index++;
+                index++;
             }
         }
         products = tmp;
@@ -65,5 +55,5 @@ public class ShopRepository {
         }
         return null;
     }
-    }
+}
 
